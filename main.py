@@ -1,16 +1,33 @@
-# This is a sample Python script.
+import complex
+import rational
+import ui
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+ans = 'y'
+while ans != 'n':
+    x = ui.get_x()
+    op = ui.get_op()
+    y = ui.get_y()
 
+    if op == '*':
+        if x[-1] == 'j' or y[-1] == 'j':
+            res = complex.mult(x, y)
+        else:
+            res = rational.mult(x, y)
+    elif op == '/':
+        if x[-1] == 'j' or y[-1] == 'j':
+            res = complex.div(x, y)
+        else:
+            res = rational.div(x, y)
+    elif op == '+':
+        if x[-1] == 'j' or y[-1] == 'j':
+            res = complex.sum(x, y)
+        else:
+            res = rational.sum(x, y)
+    elif op == '-':
+        if x[-1] == 'j' or y[-1] == 'j':
+            res = complex.sub(x, y)
+        else:
+            res = rational.sub(x, y)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    ui.print_result(res)
+    ans = ui.get_ans()
