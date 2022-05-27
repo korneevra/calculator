@@ -1,6 +1,7 @@
 import complex
 import rational
 import ui
+import logger
 
 ans = 'y'
 while ans != 'n':
@@ -30,4 +31,6 @@ while ans != 'n':
             res = rational.sub(x, y)
 
     ui.print_result(res)
+    logger.write_file(f'{x} {op} {y} = {res}\n')
+
     ans = ui.get_ans()
